@@ -1,10 +1,14 @@
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import FeedbackContext from '../context/FeedbackContext';
 import Card from './shared/Card';
 import RatingSelect from './RatingSelect';
 import Button from './shared/Button';
 import { v4 as uuidv4 } from 'uuid';
 
-function FeedbackForm({ handleAdd }) {
+function FeedbackForm() {
+	//Extract addFeedback function from the context
+	const { addFeedback } = useContext(FeedbackContext);
+
 	// State to hold the value of the input field
 	const [text, setText] = useState('');
 	// State to hold the value of the rating select field
@@ -38,7 +42,7 @@ function FeedbackForm({ handleAdd }) {
 				text,
 				rating,
 			};
-			handleAdd(newFeedback);
+			addFeedback(newFeedback);
 			setText('');
 		}
 	};
