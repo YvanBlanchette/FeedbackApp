@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+
+:root {
+  --clr-accent-95: hsl(73 100% 90%/0.5);
+  --clr-accent-90: hsl(73 100% 90%);
+  --clr-accent-80: hsl(73 100% 80%);
+  --clr-accent-70: hsl(73 100% 70%);
+  --clr-accent-60: hsl(73 100% 60%);
+  --clr-accent-50: hsl(73 100% 50%);
+  --clr-accent-40: hsl(73 100% 40%);
+  --clr-accent-30: hsl(79 100% 29%);
+  --clr-accent-20: hsl(79 100% 20%);
+  --clr-yellow: hsl(42, 98%, 56%);
+  --clr-red: hsl(357, 84%, 52%);
+  --clr-red-dark: hsl(357, 84%, 30%);
+  --clr-blue: hsl(197, 81%, 48%);
+}
+
+/* !---> RESET <---! */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+ul {
+  list-style: none;
+}
+
+
+/* !---> GLOBAL VARIABLES <---! */
+body {
+  font-family: 'Poppins', sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background: var(--clr-accent-30);
+  background: linear-gradient(170deg, var(--clr-accent-20) 0%, var(--clr-accent-80) 100%);
+  color: #fff;
+  line-height: 1.6;
+}
+
+.container {
+  max-width: 768px;
+  margin: auto;
+  padding: 0 20px;
+}
+
+
+
+/* !---> COMPONENTS <---! */
+
+header {
+  height: fit-content;
+  width: 100%;
+  padding-block: 1rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.8rem;
+}
+
+.card {
+  background-color: #fff;
+  color: #333;
+  border-radius: 15px;
+  padding: 40px 50px;
+  margin: 20px 0;
+  position: relative;
+
+  &.darkMode {
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #fff;
+  }
+
+  & h2 {
+    font-size: 22px;
+    font-weight: 600;
+    text-align: center;
+  }
+}
+
+.rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  margin: 30px 0 40px;
+}
+
+.rating li,
+.num-display {
+  position: relative;
+  background: #f4f4f4;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  text-align: center;
+  border-radius: 50%;
+  font-size: 19px;
+  border: 1px #eee solid;
+  transition: 0.3s;
+}
+
+.rating li label {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 50px;
+  height: 50px;
+  padding: 10px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.rating li:hover,
+.num-display {
+  background-color: var(--clr-yellow);
+  color: #fff;
+}
+
+[type='radio'] {
+  opacity: 0;
+
+  &:checked~label {
+    background-color: var(--clr-yellow);
+    color: #fff;
+  }
+}
+
+
+
+.input-group {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid #ccc;
+  padding: 8px 10px;
+  border-radius: 8px;
+}
+
+input {
+  flex-grow: 2;
+  border: none;
+  font-size: 16px;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.feedback-stats {
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.num-display {
+  position: absolute;
+  top: -10px;
+  left: -10px;
+}
+
+.close,
+.edit {
+  position: absolute;
+  top: 10px;
+  right: 20px;
+  cursor: pointer;
+  background: none;
+  border: none;
+  color: var(--clr-red);
+  font-size: 1.25rem;
+  transition: color 300ms;
+
+  &:hover {
+    color: var(--clr-red-dark);
+  }
+}
+
+.edit {
+  right: 40px;
+}
+
+.btn {
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  width: 100px;
+  height: 40px;
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 600;
+
+  &:hover {
+    transform: scale(0.98);
+    opacity: 0.9;
+  }
+
+
+  &.btn-primary {
+    background-color: var(--clr-blue);
+  }
+
+  &.btn-secondary {
+    background: var(--clr-red);
+  }
+
+
+  &:disabled {
+    background-color: hsl(0, 0%, 90%);
+    color: hsl(0, 0%, 80%);
+    cursor: auto;
+  }
+
+  &:disabled:hover {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+
+.message {
+  padding-top: 10px;
+  text-align: center;
+  color: var(--clr-red);
+}
+
+/* FIX: Remove position: absolute to keep about icon at the bottom of the document */
+.about-link {
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* FIX: Remove position: absolute to keep about icon at the bottom of the document */
+.about-link a {
+  color: #fff;
+  cursor: pointer;
+}
+
+.about-link a:hover {
+  color: var(--clr-pink-light);
+}
+
+.about h1 {
+  margin-bottom: 20px;
+}
+
+.about p {
+  margin: 10px 0;
+}
+
+
+/* !---> MEDIA QUERIES <---! */
+@media (max-width: 600px) {
+  .rating {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 30px 0 40px;
+
+    & li {
+      margin: 10px 3px;
+    }
+  }
+
+  .input-group input {
+    width: 80%;
+  }
+}
