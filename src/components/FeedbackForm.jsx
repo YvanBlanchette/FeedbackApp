@@ -1,13 +1,22 @@
-import { useState, useContext } from 'react';
+import { useState, useContext, useEffect } from 'react';
 import FeedbackContext from '../context/FeedbackContext';
+import { v4 as uuidv4 } from 'uuid';
 import Card from './shared/Card';
 import RatingSelect from './RatingSelect';
 import Button from './shared/Button';
-import { v4 as uuidv4 } from 'uuid';
 
 function FeedbackForm() {
-	//Extract addFeedback function from the context
-	const { addFeedback } = useContext(FeedbackContext);
+	//Extract addFeedback and feedbackEdit functions from the context
+	const { addFeedback, feedbackEdit, updateFeedback } = useContext(FeedbackContext);
+
+	// Use effect to set the text state to the value of the feedbackEdit item
+	useEffect(() => {
+		if (feedbackEdit.edit === true) {
+			setBtnDisabled(false);
+			setText(feedbackEdit.item.text);
+			setRating(feedbackEdit.item.rating);
+		}
+	}, [feedbackEdit]);
 
 	// State to hold the value of the input field
 	const [text, setText] = useState('');
@@ -36,17 +45,25 @@ function FeedbackForm() {
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		// If the text state is not empty and has more than 10 characters, create a new feedback item
 		if (text.trim().length > 10) {
 			const newFeedback = {
 				id: uuidv4(),
 				text,
 				rating,
 			};
-			addFeedback(newFeedback);
+
+			// If the feedbackEdit state is true, update the feedback item
+			if (feedbackEdit.edit === true) {
+				updateFeedback(feedbackEdit.item.id, newFeedback);
+			} else {
+				addFeedback(newFeedback);
+			}
 			setText('');
 		}
 	};
 
+	// Rendering the component
 	return (
 		<Card>
 			<h2>Comment évalueriez-vous votre expérience ?</h2>
