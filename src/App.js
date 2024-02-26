@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import FeedbackData from './data/FeedbackData';
 import Header from './components/Header';
+import Footer from './components/Footer';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
@@ -11,7 +12,7 @@ function App() {
 
   //Function to delete feedback
   const deleteFeedback = (id) => {
-    if (window.confirm('Are you sure you want to delete this feedback?')) {
+    if (window.confirm('Êtes-vous sûr(e) de vouloir supprimer ce commentaire ?')) {
       setFeedback(feedback.filter((item) => item.id !== id))
     }
   }
@@ -30,6 +31,7 @@ function App() {
         <FeedbackStats feedback={feedback} />
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
       </div>
+      <Footer backgroundColor="rgba(0, 0, 0, 0.5)" />
     </>
   );
 }

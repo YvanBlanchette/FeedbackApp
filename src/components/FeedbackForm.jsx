@@ -21,7 +21,7 @@ function FeedbackForm({ handleAdd }) {
 			setMessage(null);
 		} else if (text !== '' && text.trim().length <= 10) {
 			setBtnDisabled(true);
-			setMessage('Your review is too short, must be at least 10 characters long.');
+			setMessage('Votre commentaire est trop court, il doit comporter au moins 10 caractères.');
 		} else {
 			setMessage(null);
 			setBtnDisabled(false);
@@ -45,14 +45,14 @@ function FeedbackForm({ handleAdd }) {
 
 	return (
 		<Card>
-			<h2>How would you rate your service with us?</h2>
+			<h2>Comment évalueriez-vous notre service ?</h2>
 			<form onSubmit={handleSubmit}>
 				<RatingSelect select={(rating) => setRating(rating)} />
 				<div className='input-group'>
 					<label htmlFor='review' hidden></label>
-					<input onChange={handleStateChange} value={text} type='text' id='review' placeholder='Write a review...' />
+					<input onChange={handleStateChange} value={text} type='text' id='review' placeholder='Écrire un commentaire...' />
 					<Button type='submit' version='primary' isDisabled={btnDisabled}>
-						Send
+						Envoyer
 					</Button>
 				</div>
 

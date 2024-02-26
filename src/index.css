@@ -232,30 +232,11 @@ input {
   color: var(--clr-red);
 }
 
-/* FIX: Remove position: absolute to keep about icon at the bottom of the document */
-.about-link {
-  display: flex;
-  justify-content: flex-end;
+.author {
+  color: var(--clr-yellow);
+  text-decoration: none;
+  font-weight: 600;
 }
-
-/* FIX: Remove position: absolute to keep about icon at the bottom of the document */
-.about-link a {
-  color: #fff;
-  cursor: pointer;
-}
-
-.about-link a:hover {
-  color: var(--clr-pink-light);
-}
-
-.about h1 {
-  margin-bottom: 20px;
-}
-
-.about p {
-  margin: 10px 0;
-}
-
 
 /* !---> MEDIA QUERIES <---! */
 @media (max-width: 600px) {
