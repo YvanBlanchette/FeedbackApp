@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import FeedbackList from './components/FeedbackList';
 import FeedbackStats from './components/FeedbackStats';
 import FeedbackForm from './components/FeedbackForm';
+import { FeedbackProvider } from './context/FeedbackContext';
 
 function App() {
   // State to hold the feedback data
@@ -24,7 +25,7 @@ function App() {
   }
 
   return (
-    <>
+    <FeedbackProvider>
       <Header backgroundColor="rgba(255, 255, 255, 0.25)" />
       <div className="container">
         <FeedbackForm handleAdd={addFeedback} />
@@ -32,7 +33,7 @@ function App() {
         <FeedbackList feedback={feedback} handleDelete={deleteFeedback} />
       </div>
       <Footer backgroundColor="rgba(0, 0, 0, 0.5)" />
-    </>
+    </FeedbackProvider>
   );
 }
 
