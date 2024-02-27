@@ -1,6 +1,5 @@
 import { useState, useContext, useEffect } from 'react';
 import FeedbackContext from '../context/FeedbackContext';
-import { v4 as uuidv4 } from 'uuid';
 import Card from './shared/Card';
 import RatingSelect from './RatingSelect';
 import Button from './shared/Button';
@@ -48,7 +47,6 @@ function FeedbackForm() {
 		// If the text state is not empty and has more than 10 characters, create a new feedback item
 		if (text.trim().length > 10) {
 			const newFeedback = {
-				id: uuidv4(),
 				text,
 				rating,
 			};
